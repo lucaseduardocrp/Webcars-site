@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Logo_Image from '../../assets/Logo.svg';
@@ -7,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../../components/Input';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../../services/firebase';
 
 const schema = z.object({
@@ -20,7 +21,6 @@ type FormData = z.infer<typeof schema>;
 
 export const Register = () => {
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -29,7 +29,6 @@ export const Register = () => {
     resolver: zodResolver(schema),
     mode: 'onChange'
   });
-
   function onSubmit(data: FormData) {
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then(async (user) => {
@@ -38,13 +37,21 @@ export const Register = () => {
         });
 
         console.log('CADASTRADO COM SUCESSO!');
-        navigate('/dashboart', { replace: true });
+        navigate('/', { replace: true });
       })
       .catch((error) => {
         console.log('ERRO AO CADASTRAR ESTE USUÁRIO');
         console.log(error);
       });
   }
+
+  useEffect(() => {
+    async function handleLogout() {
+      await signOut(auth);
+    }
+
+    handleLogout();
+  }, []);
 
   return (
     <Container>
@@ -57,7 +64,7 @@ export const Register = () => {
           <div className="mb-2">
             <Input
               type="text"
-              name="nome"
+              name="name"
               placeholder="Digite o seu nome"
               error={errors.name?.message}
               register={register}

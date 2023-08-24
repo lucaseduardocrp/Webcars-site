@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Logo_Image from '../../assets/Logo.svg';
 import Container from '../../components/Container';
@@ -7,6 +8,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../../components/Input';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { auth } from '../../services/firebase';
 
 const schema = z.object({
   email: z.string().email('Insira um email válido').nonempty('O campo email é obrigatório'),
@@ -16,6 +19,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export const Login = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -27,7 +32,23 @@ export const Login = () => {
 
   function onSubmit(data: FormData) {
     console.log(data);
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then(() => {
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.log('Erro ao tentar fazer o login');
+        console.log(error);
+      });
   }
+
+  useEffect(() => {
+    async function handleLogout() {
+      await signOut(auth);
+    }
+
+    handleLogout();
+  }, []);
 
   return (
     <Container>
