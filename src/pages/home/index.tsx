@@ -51,11 +51,7 @@ export const Home = () => {
         {cars.map((car) => (
           <Link key={car.id} to={`/car/${car.id}`}>
             <section className="w-full bg-white rounded-lg">
-              <img
-                className="w-full rounded-lg mb-2 max-h-72 hover:scale-105 transition-all"
-                src={car.images[0].url}
-                alt="Carro"
-              />
+              <img src={car.images[0].url} alt="Carro" className="w-full rounded-lg mb-2 max-h-72" />
               <p className="font-bold mt-1 mb-2 px-2">{car.name}</p>
 
               <div className="flex flex-col px-2">

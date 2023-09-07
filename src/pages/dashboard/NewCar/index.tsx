@@ -127,6 +127,7 @@ export function NewCar() {
     })
       .then(() => {
         reset();
+        setCarImages([]);
         console.log('Cadastrado com sucesso');
       })
       .catch((error) => {
