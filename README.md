@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+<img src='./public/Preview.webp' alt='Project Banner' />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Webcars site
 
-Currently, two official plugins are available:
+Um site focado na venda e troca de veículos novos ou usados, baseado na dinâmica do famoso OLX, aonde o usuário faz um anúncio e negocia com outros usuários diretamente.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Foi criada uma interface simples e fácil de ser usada, para que pudesse atender o público globalmente de uma forma confortável.
 
-## Expanding the ESLint configuration
+# 🧠 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+O projeto tem todas funcionalidades para facilitar a venda e troca de veículos, dentre as funcionalidades do site temos:
 
-- Configure the top-level `parserOptions` property like this:
+- ✔️ registro de usuário
+- ✔️ login de usuário
+- ✔️ cadastro de veículos
+- ✔️ excluir veículos
+- ✔️ encaminhamento de mensagem para o whatsapp
+- ✔️ Ver informações dos veículos
+- ✔️ Filtro de busca
+- ✔️ Privatização de rotas
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## 🖥️ Tecnologias Utilizadas
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- React.JS - Framework para interfaces de usuário
+- Vite.JS - Build tool para organizar projeto
+- Typescript - Superset de Javascript
+- TailwindCSS - Estilização
+- Firebase - Banco de dados
+- React-router-dom - Biblioteca para roteamento de páginas
+- Git - Versionamento de códigos
+- Figma - Design da interface do projeto
+
+## Configuração do projeto ⚙️⚙️
+
+- ESlint
+- Prettier
