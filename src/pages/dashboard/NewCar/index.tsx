@@ -16,7 +16,7 @@ import { addDoc, collection } from 'firebase/firestore';
 
 import { FiUpload, FiTrash } from 'react-icons/fi';
 import { TImageItem } from '../../../types/TImageItem';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 const schema = z.object({
   name: z.string().nonempty('O campo nome é obrigatório'),
@@ -79,7 +79,7 @@ export function NewCar() {
       if (image.type === 'image/jpeg' || image.type === 'image/png') {
         await handleUpload(image);
       } else {
-        alert('Envie uma imagem JPEG ou PNG');
+        toast.error('Envie uma imagem JPEG ou PNG');
         return;
       }
     }
@@ -94,13 +94,14 @@ export function NewCar() {
       await deleteObject(imageRef);
       setCarImages(carImages.filter((car) => car.url !== item.url));
     } catch (error) {
-      console.log('ERRO AO DELETAR');
+      toast.error('Erro ao deletar');
+      console.log(error);
     }
   };
 
   function onSubmit(data: FormData) {
     if (carImages.length === 0) {
-      alert('Envie alguma imagem do carro');
+      toast.error('Envie alguma imagem do carro');
       return;
     }
 
@@ -135,8 +136,6 @@ export function NewCar() {
         toast.error('Falha ao tentar cadastrar um carro!');
         console.log(error);
       });
-
-    console.log(data);
   }
 
   return (

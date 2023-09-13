@@ -12,7 +12,7 @@ import { createUserWithEmailAndPassword, signOut, updateProfile } from 'firebase
 import { auth } from '../../services/firebase';
 
 import { AuthContext } from '../../context/AuthContext';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 const schema = z.object({
   name: z.string().nonempty('O campo nome é obrigatório'),

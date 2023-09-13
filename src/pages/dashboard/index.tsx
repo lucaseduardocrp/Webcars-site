@@ -9,7 +9,7 @@ import { db, storage } from '../../services/firebase';
 import { ref, deleteObject } from 'firebase/storage';
 import { AuthContext } from '../../context/AuthContext';
 import { TCars } from '../../types/TCars';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 export const Dashboard = () => {
   const [cars, setCars] = useState<TCars[]>([]);

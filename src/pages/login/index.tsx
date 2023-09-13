@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../../components/Input';
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../../services/firebase';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 const schema = z.object({
   email: z.string().email('Insira um email válido').nonempty('O campo email é obrigatório'),
