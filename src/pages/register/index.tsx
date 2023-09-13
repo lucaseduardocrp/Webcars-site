@@ -12,6 +12,7 @@ import { createUserWithEmailAndPassword, signOut, updateProfile } from 'firebase
 import { auth } from '../../services/firebase';
 
 import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const schema = z.object({
   name: z.string().nonempty('O campo nome é obrigatório'),
@@ -47,11 +48,11 @@ export const Register = () => {
           email: data.email
         });
 
-        console.log('CADASTRADO COM SUCESSO!');
+        toast.success('Conta criada com sucesso!');
         navigate('/', { replace: true });
       })
       .catch((error) => {
-        console.log('ERRO AO CADASTRAR ESTE USUÁRIO');
+        toast.error('Erro ao tentar cadastrar um conta!');
         console.log(error);
       });
   }

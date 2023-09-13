@@ -9,6 +9,7 @@ import { db, storage } from '../../services/firebase';
 import { ref, deleteObject } from 'firebase/storage';
 import { AuthContext } from '../../context/AuthContext';
 import { TCars } from '../../types/TCars';
+import { toast } from 'react-toastify';
 
 export const Dashboard = () => {
   const [cars, setCars] = useState<TCars[]>([]);
@@ -59,8 +60,9 @@ export const Dashboard = () => {
       try {
         await deleteObject(imageRef);
         setCars(cars.filter((car) => car.id !== itemCar.id));
+        toast.success('Carro deletado com sucesso!');
       } catch (err) {
-        console.log('ERRO AO EXCLUIR ESSA IMAGEM');
+        toast.error('Erro ao tentar excluir essa imagem');
       }
     });
   }

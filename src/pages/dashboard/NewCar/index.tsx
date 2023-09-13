@@ -16,6 +16,7 @@ import { addDoc, collection } from 'firebase/firestore';
 
 import { FiUpload, FiTrash } from 'react-icons/fi';
 import { TImageItem } from '../../../types/TImageItem';
+import { toast } from 'react-toastify';
 
 const schema = z.object({
   name: z.string().nonempty('O campo nome é obrigatório'),
@@ -128,10 +129,11 @@ export function NewCar() {
       .then(() => {
         reset();
         setCarImages([]);
-        console.log('Cadastrado com sucesso');
+        toast.success('Carro cadastrado com sucesso!');
       })
       .catch((error) => {
-        console.log('ERRO AO CADASTRAR', error);
+        toast.error('Falha ao tentar cadastrar um carro!');
+        console.log(error);
       });
 
     console.log(data);
